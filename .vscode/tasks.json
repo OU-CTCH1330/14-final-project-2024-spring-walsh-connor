@@ -1,0 +1,49 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build program",
+            "detail": "Build program executable bin/lms with make build system",
+            "command": "make all",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+        {
+            "type": "shell",
+            "label": "Clean with make",
+            "detail": "Purge all build content",
+            "command": "make clean",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Run program",
+            "detail": "Run program",
+            "command": "bin/lms",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ],
+
+    "inputs": [
+        {
+            "id": "testClass",
+            "description": "Traget class that test should run on",
+            "type": "pickString",
+            "default": "scratch",
+            "options": ["instructor", "student", "students", "roster", "data", "scratch"]
+
+        }
+    ],
+
+    "version": "2.0.0"
+}
