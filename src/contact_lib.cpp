@@ -68,17 +68,6 @@ namespace ctch1330
 		cin.ignore(std::numeric_limits<streamsize>::max(), '\n' );	
 	    }
 
-    void printMenu()
-    {
-	    cout << "Contact Management System" << endl;
-	    cout << "1.) - Add a new contact" << endl;
-	    cout << "2.) - Remove existing contact" << endl;
-	    cout << "3.) - View Contacts" << endl;
-	    cout << "4.) - Quit" << endl;
-	    cout << endl;
-	    cout << "Choose an option:  " << endl;
-    }
-
     void DisplayContacts(vector<string> contact_list)
     {
         int contact_list_size = contact_list.size();
