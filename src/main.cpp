@@ -1,44 +1,43 @@
 #include <iostream>
 #include <string>
-#include "contact_lib.cpp"
+#include "contact.h"
 
-using namespace std;
+using namespace ctch1330;
 
 int main()
 {
-	string menu;
+	cout << endl << "Contact Management System " << endl;
 
-	printMenu();
-	cin >> menu;
-	while (menu != "5")
+	while (true)
 	{
-		if(menu == "1")
+		int user_selection = 0;
+		vector<string> menu;
+
+		try
 		{
-			AddContact(contact_list);
-			break;
+			menu = GetMenuFromDatabase();
+			RenderMainMenu(menu);
 		}
-		else if(menu == "2")
+		catch(const exception& e)
 		{
-			RemoveContact(contact_list);
-			break;
-		}
-		else if(menu == "3")
+			cerr << e.what() << endl;
+			continue;
+		}		
+		
+		try
 		{
-			DisplayContacts(contact_list);
-			break;
+			user_selection = GetUserSelection(menu.size());
 		}
-		else if(menu == "4") 
+		catch(const runtime_error& e)
 		{
-			cout << "Exiting..." << endl;
-			exit(0);	
+			cerr << e.what() << endl;
+			continue;
 		}
-		else
-		{
-			cout << "Invalid user selection" << endl;
-			WaitForUser();
-			break;
-		}
+		
+		DispatchSelectedOperation(user_selection);
+
 	}
+	
 	return 0;
 }
 
